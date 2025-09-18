@@ -46,6 +46,58 @@ const createTodoList = arr=>{
 
 createTodoList(todoArr);
 
+const onEdit =(ele)=>{
+   let EDIT_ID = ele.closest('li').id;
+   cl(EDIT_ID)
+   localStorage.setItem('EDIT_ID', EDIT_ID);
+   let EDIT_OBJ = todoArr.find(todo=> todo.todoId === EDIT_ID );
+   cl(EDIT_OBJ);
+
+   // fetch data to control
+   todoItemControl.value = EDIT_OBJ.todoItem;
+   addTodoItem.classList.add('d-none')
+  updateTodoItem.classList.remove('d-none')
+
+ }
+
+
+ const onTodoUpdate=()=>{
+   const UPDATED_ID = localStorage.getItem('EDIT_ID');
+
+   // upadaet Object
+   let UPDATED_OBJ ={
+      todoItem:todoItemControl.value,
+      todoId: UPDATED_ID
+   }
+   cl(UPDATED_OBJ);
+
+   // replace in ls
+
+   let getIndex = todoArr.findIndex(todo=> todo.todoId=== UPDATED_ID)
+   todoArr[getIndex]= UPDATED_OBJ;
+
+   // update in ls
+    setItem()
+   // update on ui 
+
+   let li = document.getElementById(UPDATED_ID).firstElementChild;
+   cl(li);
+   li.innerHTML = UPDATED_OBJ.todoItem;
+  
+ addTodoItem.classList.remove('d-none')
+  updateTodoItem.classList.add('d-none')
+
+                     Swal.fire({
+            title:`TodoItem Updated successfully`,
+            icon: "success",
+            timer:"2000"
+            });
+             todoForm.reset()
+ }
+
+
+
+
 const onAddTodo =(eve)=>{
  eve.preventDefault();
 
