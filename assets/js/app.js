@@ -46,6 +46,41 @@ const createTodoList = arr=>{
 
 createTodoList(todoArr);
 
+const onRemove = ele=>{
+   Swal.fire({
+  title: `Are u sure, you want to remove todoItem ?`,
+  text: "You won't be able to revert this!",
+  icon: "warning",
+  showCancelButton: true,
+  confirmButtonText: "Yes, delete it!"
+}).then((result) => {
+  if (result.isConfirmed) {
+    let REMOVE_ID = ele.closest('li').id;
+    cl(REMOVE_ID);
+
+   //  get index Node. from obj
+
+   let getIndex = todoArr.findIndex(todo=> todo.todoId === REMOVE_ID);
+
+   // remove obj from arr 
+
+   todoArr.splice(getIndex, 1);
+
+   // update arr in ls
+  setItem()
+   // remove from UI
+   ele.closest('li').remove();
+   Swal.fire({
+            title:`todoItem removed successfully`,
+            icon: "success",
+            timer:"2000"
+            });
+  }
+});
+}
+
+
+
 const onEdit =(ele)=>{
    let EDIT_ID = ele.closest('li').id;
    cl(EDIT_ID)
