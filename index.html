@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha512-DxV+EoADOkOygM4IR9yXP8Sb2qwgidEmeqAEmDKIOfPRQZOWbXCzLC6vjbZyy0vPisbH2SyW27+ddLVCN+OMzQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+
+  <link rel="stylesheet" href="./assets/css/style.css">
+  <title>Todo using LS</title>
+</head>
+<body>
+  <header class="bg-secondary text-white mb-4 p-4">Todo Crud</header>
+  <div class="container">
+    <div class="row">
+     <div class="col-md-6 mb-4 md-mb-0">
+      <div class="card">
+        <div class="card-body text-dark">
+          <form id="todoForm">
+              <div class="form-group">
+                <label for="todoItem">TODOITEM</label>
+                <input type="text" id="todoItem" class="form-control" required>
+              </div>
+              <button id="addTodoItem" type="submit" class="btn btn-success btn-block">AddTodoItem</button>
+              <button  id="updateTodoItem" type="button" class="btn btn-success btn-block d-none">UpdateTodoItem</button>
+          </form>
+        </div>
+      </div>
+     </div>
+     <div class="col-md-6">
+      <ul class="list-group" id="todoContainer">
+        <!-- <li class="list-group-item d-flex justify-content-between align-item-center" id="123">
+          <strong>js</strong>
+          <div>
+            <i class="fa-solid fa-pen-to-square fa-2x text-success  text-center"></i>
+            <i class="fa-solid fa-trash fa-2x text-danger text-center"></i>
+          </div>
+        </li> -->
+        
+        
+      </ul>
+     </div>
+    </div>
+  </div>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script src="./assets/js/app.js"></script>
+</body>
+</html>
