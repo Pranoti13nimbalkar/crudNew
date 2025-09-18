@@ -46,3 +46,47 @@ const createTodoList = arr=>{
 
 createTodoList(todoArr);
 
+const onAddTodo =(eve)=>{
+ eve.preventDefault();
+
+//  to create todoObj
+let todoObj ={
+   todoItem :  todoItemControl.value,
+   todoId : uuid()
+}
+
+cl(todoObj)
+
+// to store in ls 
+todoArr.push(todoObj);
+  setItem()
+
+// create new li/
+const li =document.createElement('li');
+li.className="list-group-item d-flex justify-content-between align-item-center";
+li.id = todoObj.todoId;
+li.innerHTML= ` <strong>${todoObj.todoItem}</strong>
+          <div>
+            <i class="fa-solid fa-pen-to-square fa-2x text-success text-center" onClick="onEdit(this)"></i>
+            <i class="fa-solid fa-trash fa-2x text-danger  text-center" onClick="onRemove(this)"></i>
+          </div>`
+
+          const ul = document.querySelector('#todoContainer');
+          ul.append(li);
+
+                     Swal.fire({
+            title:`${todoObj.todoItem} added successfully`,
+            icon: "success",
+            timer:"2000"
+            });
+            todoForm.reset();
+}
+
+
+
+
+
+
+
+todoForm.addEventListener('submit', onAddTodo);
+updateTodoItem.addEventListener('click', onTodoUpdate)
