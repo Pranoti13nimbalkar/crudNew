@@ -1,0 +1,48 @@
+let cl = console.log;
+
+
+const todoForm = document.getElementById("todoForm");
+const todoItemControl = document.getElementById("todoItem");
+const addTodoItem = document.getElementById("addTodoItem");
+const updateTodoItem = document.getElementById("updateTodoItem");
+const todoContainer= document.getElementById('todoContainer');
+
+let todoArr=[
+   
+];
+if(localStorage.getItem('todoArr')){
+   todoArr = JSON.parse(localStorage.getItem('todoArr'))
+}
+
+uuid = () => {
+    return (
+        String('xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx')
+    ).replace(/[xy]/g, (character) => {
+        const random = (Math.random() * 16) | 0;
+        const value = character === "x" ? random : (random & 0x3) | 0x8;
+        return value.toString(16);
+    });
+};
+const setItem =()=>{
+   localStorage.setItem('todoArr', JSON.stringify(todoArr))
+}
+// to write a function of templating
+
+const createTodoList = arr=>{
+   if(arr.length >0){
+      let result=``
+      arr.forEach(ele => {
+         result+= ` <li class="list-group-item d-flex justify-content-between align-item-center" id="${ele.todoId}">
+          <strong>${ele.todoItem}</strong>
+          <div>
+            <i class="fa-solid fa-pen-to-square fa-2x text-success  text-center" onClick="onEdit(this)"></i>
+            <i class="fa-solid fa-trash fa-2x text-danger  text-center" onClick="onRemove(this)"></i>
+          </div>
+        </li>`
+      });
+        todoContainer.innerHTML =result;
+   }
+}
+
+createTodoList(todoArr);
+
